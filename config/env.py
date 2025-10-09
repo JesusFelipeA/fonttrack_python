@@ -5,3 +5,5 @@ DB_NAME = "tienda_db"
 COLLECTION_PRODUCTS = "productos"
 COLLECTION_USERS = "usuarios"
 COLLECTION_ORDERS = "ordenes"
+COLLECTION_CATEGORIES="categorias"
+
