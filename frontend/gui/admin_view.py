@@ -18,7 +18,6 @@ def show_message_from_state():
             st.info(msg)
 
 def confirm_action(prompt: str, key: str):
-    """Simple confirm pattern: show prompt + two buttons in columns."""
     c1, c2 = st.columns([3, 1])
     c1.write(prompt)
     if c2.button("Sí", key=key + "_yes"):
@@ -38,7 +37,6 @@ def build_admin_frame():
     st.title("⚙️ Panel de administración")
     st.caption("Interfaz HCI: affordance, evaluación, diálogo y manipulación directa aplicados al CRUD.")
 
-    # Intro / affordance
     with st.expander("ℹ️ Sobre esta interfaz (clic para abrir)"):
         st.markdown(
             """
@@ -51,7 +49,6 @@ def build_admin_frame():
             """
         )
 
-    # Principal: selector de sección con affordance (iconos, ayuda)
     seccion = st.radio(
         "¿Qué deseas administrar?",
         ["👤 Usuarios", "📦 Productos", "📁 Categorías", "📊 Analytics"],
@@ -461,7 +458,6 @@ def build_admin_frame():
             """
         )
 
-        # quick product stats
         try:
             products = product_service.get_all_products(limit=500) or []
             if not products:
@@ -473,14 +469,12 @@ def build_admin_frame():
                 st.write("Distribución de precios (tabla):")
                 st.dataframe(df[["name","price","stock","category"]].rename(columns={"name":"Nombre","price":"Precio","stock":"Stock","category":"Categoría"}))
 
-                # quick regression placeholder
                 with st.expander("🔎 Ejecutar regresión lineal (precio ~ stock) — quick test"):
                     run_reg = st.button("Ejecutar regresión simple")
                     if run_reg:
                         try:
                             import numpy as np
                             from numpy.linalg import lstsq
-                            # preparar datos: X = stock, y = price
                             df_clean = df.dropna(subset=["price","stock"])
                             X = df_clean["stock"].astype(float).values.reshape(-1,1)
                             y = df_clean["price"].astype(float).values
