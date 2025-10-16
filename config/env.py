@@ -1,9 +1,9 @@
 # config/env.py
 
 MONGO_URI = "mongodb://localhost:27017"
-DB_NAME = "tienda_db"
-COLLECTION_PRODUCTS = "productos"
-COLLECTION_USERS = "usuarios"
-COLLECTION_ORDERS = "ordenes"
-COLLECTION_CATEGORIES="categorias"
+DB_NAME = "inventariofinal"
 
+COLLECTION_LUGARES = "lugares"
+COLLECTION_MATERIALES = "materiales"
+COLLECTION_FALLAS = "fallas"
+COLLECTION_USERS = "usuarios" 
